@@ -28,11 +28,15 @@ public class CloudPainter extends JPanel {
 		int firstColor = colorR;
 		int rand = Main.randomWithRange(5, 10);
 		int firstR = rand;
-		int minHeight = 10;
+		int minHeight = (Main.cloudSize / 2) - 10;
 		int maxHeight = Main.cloudSize / 2;
+		boolean hole = Math.random() < 0.5 ? false : true;
+		int holeWidth = Main.randomWithRange(25, Main.cloudSize / 2);
+		int holeHeight = Main.randomWithRange(25, (Main.cloudSize / 2) - 10);
+		int holeLoops = 0;
 		
-		while(secondaryLoops < Main.cloudSize) {
-			while(loops < Main.randomWithRange(minHeight, maxHeight)) {
+		while (secondaryLoops < Main.cloudSize) {
+			while (loops < Main.randomWithRange(minHeight, maxHeight)) {
 				colorMin = colorR;
 				g.setColor(new Color(colorR, colorG, colorB));
 				g.fillOval(xPos, yPos, rand, rand);
@@ -70,6 +74,19 @@ public class CloudPainter extends JPanel {
 			colorG = colorMin;
 			colorB = colorMin;
 			loops = 0;
+			if (hole == true) {
+				if (holeLoops < holeWidth / 2) {
+					minHeight -= (holeHeight / (holeWidth / 2));
+					maxHeight = minHeight + 10;
+				} else if (holeLoops < holeWidth) {
+					minHeight += (holeHeight / (holeWidth / 2));
+					maxHeight = minHeight + 10;
+				} else {
+					holeLoops = 0;
+					hole = false;
+				}
+				holeLoops++;
+			}
 			secondaryLoops += (firstR / 2);
 		}
 		
