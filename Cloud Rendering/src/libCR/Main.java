@@ -37,7 +37,7 @@ public class Main {
 		window.add(cloud);
 		window.setSize(720, 480);
 		window.setVisible(true);
-		ImageIcon icon = new ImageIcon("C:/Users/Ludvig/Pictures/Java/Cloud Renderer/clouds icon.png");
+		ImageIcon icon = new ImageIcon("pictures/clouds icon.png");
 		window.setIconImage(icon.getImage());
 		window.setTitle("Cloud Renderer (v.1.0)");
 		window.setLocation(323, 144);
