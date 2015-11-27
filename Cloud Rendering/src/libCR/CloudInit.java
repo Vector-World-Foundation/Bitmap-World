@@ -11,7 +11,7 @@ public class CloudInit extends JPanel {
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		Color sky = new Color(135, 206, 235);
+		Color sky = new Color(31, 90, 214);
 		this.setBackground(sky);
 		g.drawString("Rendering Cloud...", 10, 15);
 	}
